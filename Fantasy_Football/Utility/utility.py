@@ -1,6 +1,6 @@
 import sys
 sys.path.append("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/DE Project/Fantasy_Football")
-import Helper.helpers as helper
+import Fantasy_Football.Helper.extractor as helper
 
 
 def get_stats(category, year, position=None):
