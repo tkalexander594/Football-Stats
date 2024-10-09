@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 # Create a CSV file handler in append mode
-csv_handler = logging.FileHandler("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/DE_Project/Storage/Logs/audit_logs.csv", mode="a")
+csv_handler = logging.FileHandler("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/Football-Stats/Storage/Logs/audit_logs.csv", mode="a")
 csv_formatter = logging.Formatter("%(message)s")
 csv_handler.setFormatter(csv_formatter)
 logger.addHandler(csv_handler)
@@ -18,7 +18,7 @@ def audit_log(pipeline_name,start_time, end_time, source_system, destination_sys
     execution_id = str(uuid.uuid4())
 
     # Write CSV headers if the file is empty (using formatted times in headers too)
-    with open("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/DE_Project/Storage/Logs/audit_logs.csv", "r+") as csvfile:
+    with open("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/Football-Stats/Storage/Logs/audit_logs.csv", "r+") as csvfile:
         reader = csv.reader(csvfile)
         if not list(reader):  # Check if the file is empty
             csvfile.seek(0)  # Rewind to the beginning
