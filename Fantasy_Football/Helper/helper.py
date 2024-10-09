@@ -52,8 +52,9 @@ def get_data(url):
 
 def get_stats(category, year, position=None):
     import sys
-    sys.path.append("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/DE Project/Fantasy_Football")
+    sys.path.append("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/Football-Stats/Fantasy_Football")
     import Fantasy_Football.Helper.helper as helper
+    import Fantasy_Football.Utility.utility as util
 
     """
     Retrieves player or team statistics based on the specified category, year, and optional position.
@@ -93,11 +94,11 @@ def get_stats(category, year, position=None):
     
 
     if position:
-        team_stats = helper.get_team_category_stats(category, position)
+        team_stats = util.get_team_category_stats(category, position)
         url = f'https://www.nfl.com/stats/team-stats/{position}/{team_stats}/{year}/reg/all'
         data, headers = helper.get_data(url)
     else:     
-        sort_by = helper.get_player_category_stats(category)
+        sort_by = util.get_player_category_stats(category)
         url = f'https://www.nfl.com/stats/player-stats/category/{category}/{year}/reg/all/{sort_by}/desc'
         data, headers = helper.get_data(url)
         
