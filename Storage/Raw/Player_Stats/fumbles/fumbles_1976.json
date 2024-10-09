@@ -1,0 +1,88 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Mike Adamle",
+        "Coy Bacon",
+        "Dave Brown",
+        "Ron Fernandes",
+        "Tommy Hart",
+        "Tom Henderson",
+        "Ted Hendricks",
+        "Claude Humphrey",
+        "Aaron Kyle",
+        "John Lohmeyer",
+        "Ron McDole",
+        "Mack Mitchell",
+        "Johnny Musso",
+        "Loren Toews"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "2",
+        "2",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1",
+        "0",
+        "2",
+        "2",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

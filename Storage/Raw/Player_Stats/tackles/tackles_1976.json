@@ -1,0 +1,109 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Mike Adamle",
+        "Coy Bacon",
+        "Dave Brown",
+        "Ron Fernandes",
+        "Tommy Hart",
+        "Tom Henderson",
+        "Ted Hendricks",
+        "Claude Humphrey",
+        "Aaron Kyle",
+        "John Lohmeyer",
+        "Ron McDole",
+        "Mack Mitchell",
+        "Johnny Musso",
+        "Loren Toews"
+      ]
+    },
+    {
+      "name": "Comb",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Asst",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Solo",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Sck",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

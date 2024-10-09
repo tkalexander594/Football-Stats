@@ -1,0 +1,94 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Ralph Anderson",
+        "Bob Brown",
+        "Al Coleman",
+        "Dave Costa",
+        "Claude Humphrey",
+        "Mike Lewis",
+        "Bill Malinchak",
+        "Joe Owens",
+        "Joe Sweet",
+        "Mark Washington",
+        "Sherman White"
+      ]
+    },
+    {
+      "name": "Comb",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Asst",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Solo",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Sck",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

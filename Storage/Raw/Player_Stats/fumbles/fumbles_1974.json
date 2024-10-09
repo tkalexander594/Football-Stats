@@ -1,0 +1,68 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Ron Carpenter",
+        "Tim Foley",
+        "L.C. Greenwood",
+        "Ted Hendricks",
+        "Wally Hilgenberg",
+        "Mike Kadish",
+        "Willie Lanier",
+        "Jim Mitchell",
+        "Otis Sistrunk"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "1",
+        "2",
+        "3",
+        "1",
+        "0",
+        "0",
+        "2",
+        "1",
+        "3"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

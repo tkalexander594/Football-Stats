@@ -1,0 +1,114 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Autry Beamon",
+        "Elvin Bethea",
+        "Joe Blahak",
+        "Mike Dennery",
+        "Ron East",
+        "Mike Hartenstine",
+        "Ted Hendricks",
+        "Bruce Laird",
+        "Ernie Price",
+        "Dave Pureifory",
+        "Don Reese",
+        "Willie Rodgers",
+        "Tom Toner",
+        "Dwight White",
+        "Jack Youngblood"
+      ]
+    },
+    {
+      "name": "Comb",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Asst",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Solo",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "Sck",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

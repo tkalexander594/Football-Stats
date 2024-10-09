@@ -1,0 +1,68 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Edgar Chandler",
+        "Doug Dieken",
+        "Doug Hart",
+        "Ron Jessie",
+        "Fran Lynch",
+        "Alan Page",
+        "Claxton Welch",
+        "Ray White",
+        "John Zook"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "3",
+        "2",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

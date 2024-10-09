@@ -1,0 +1,92 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Autry Beamon",
+        "Elvin Bethea",
+        "Joe Blahak",
+        "Mike Dennery",
+        "Ron East",
+        "Mike Hartenstine",
+        "Ted Hendricks",
+        "Bruce Laird",
+        "Ernie Price",
+        "Dave Pureifory",
+        "Don Reese",
+        "Willie Rodgers",
+        "Tom Toner",
+        "Dwight White",
+        "Jack Youngblood"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "2",
+        "0",
+        "1",
+        "0",
+        "2",
+        "1",
+        "0",
+        "2",
+        "0",
+        "2"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

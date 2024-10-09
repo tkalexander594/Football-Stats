@@ -1,0 +1,72 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "John Elliott",
+        "Jim Files",
+        "Jimmy Johnson",
+        "Walter Johnson",
+        "Joe Owens",
+        "Ron Pritchard",
+        "Al Randolph",
+        "Chuck Reynolds",
+        "Ron Snidow",
+        "Dave Washington"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "2",
+        "0",
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "2"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

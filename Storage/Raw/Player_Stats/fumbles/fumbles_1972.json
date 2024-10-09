@@ -1,0 +1,76 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Ralph Anderson",
+        "Bob Brown",
+        "Al Coleman",
+        "Dave Costa",
+        "Claude Humphrey",
+        "Mike Lewis",
+        "Bill Malinchak",
+        "Joe Owens",
+        "Joe Sweet",
+        "Mark Washington",
+        "Sherman White"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "3",
+        "1",
+        "0",
+        "0",
+        "2",
+        "1",
+        "1",
+        "0",
+        "0",
+        "2",
+        "1"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}

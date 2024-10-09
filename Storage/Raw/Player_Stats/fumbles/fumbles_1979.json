@@ -1,0 +1,64 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Doug English",
+        "Elois Grooms",
+        "Mike Lewis",
+        "Harvey Martin",
+        "Greg McCrary",
+        "Tim Moresco",
+        "John Skorupan",
+        "Wilbur Young"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "2",
+        "2",
+        "1",
+        "0",
+        "0",
+        "1",
+        "0",
+        "3"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "1"
+      ]
+    }
+  ]
+}

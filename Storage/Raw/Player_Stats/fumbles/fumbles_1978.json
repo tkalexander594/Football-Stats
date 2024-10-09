@@ -1,0 +1,96 @@
+{
+  "columns": [
+    {
+      "name": "Player",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "Lyle Alzado",
+        "Ed Beckman",
+        "Richard Bishop",
+        "Kim Bokamper",
+        "Randy Burke",
+        "Gary Burley",
+        "A.J. Duhe",
+        "Tim Fox",
+        "Tommy Hart",
+        "Dewey McClain",
+        "Lou Piccone",
+        "Steve Raible",
+        "Frank Reed",
+        "Jim Thaxton",
+        "Phil Villapiano",
+        "Charlie Waters"
+      ]
+    },
+    {
+      "name": "FF",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "name": "FR",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "2",
+        "0",
+        "0",
+        "0",
+        "2",
+        "1",
+        "0",
+        "4",
+        "0",
+        "0",
+        "5",
+        "0",
+        "2",
+        "0"
+      ]
+    },
+    {
+      "name": "FR TD",
+      "datatype": "String",
+      "bit_settings": "",
+      "values": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    }
+  ]
+}
