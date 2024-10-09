@@ -53,8 +53,8 @@ def get_data(url):
 def get_stats(category, year, position=None):
     import sys
     sys.path.append("/Users/treveralexander/Library/CloudStorage/OneDrive-EY/Personal/Football-Stats/Fantasy_Football")
-    import Fantasy_Football.Helper.helper as helper
-    import Fantasy_Football.Utility.utility as util
+    import Helper.helper as helper
+    import Utility.utility as util
 
     """
     Retrieves player or team statistics based on the specified category, year, and optional position.
