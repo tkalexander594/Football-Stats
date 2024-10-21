@@ -1,58 +1,33 @@
+import time
+from datetime import datetime
+
 def get_current_year():
-    from datetime import datetime
-    current_year = datetime.now().year
-    return current_year
+    return datetime.now().year
 
-def get_formatted_start_time(start_time):
-    from datetime import datetime
-    formatted_start_time = datetime.fromtimestamp(start_time).strftime("%Y-%m-%d %H:%M:%S")
-    return formatted_start_time
-
-def get_formatted_end_time(end_time):
-    from datetime import datetime
-    formatted_end_time = datetime.fromtimestamp(end_time).strftime("%Y-%m-%d %H:%M:%S")
-    return formatted_end_time
-
-
-def get_start_time():
-    import time
-    start_time = time.time()
-    return start_time
-
-def get_end_time():
-    import time
-    start_time = time.time()
-    return start_time
 
 def write_json(path,df):
-    # Directory path
-    json_path = path
-
     # Create the Delta table
-    df.write_json(json_path)
+    df.write_json(path)
 
     print(f"json file has successfully been created in: {path}")
 
 def write_delta(path,df):
-    # Directory path
-    delta_path = path
-
     # Create the Delta table
-    df.write_delta(delta_path)
+    df.write_delta(path)
 
     print(f"delta file has successfully been created in: {path}")  
+    
 
 def write_csv(path,df):
-    # Directory path
-    csv_path = path
-
     # Create the Delta table
-    df.write_csv(csv_path)
+    df.write_csv(path)
 
     print(f"csv file has successfully been created in: {path}")
 
 
-def get_valid_player_categories(category):
+from typing import Union, List
+
+def get_valid_player_categories(categories: Union[str, List[str]]) -> Union[str, List[str]]:
     category_map = {
         "passing": "passing",
         "rushing": "rushing",
@@ -66,11 +41,13 @@ def get_valid_player_categories(category):
         "punts": "punts",
         "punt-returns": "punt-returns",
     }
-    try:
-        valid_category = category_map[category]
-        return valid_category
-    except KeyError:
-       return "default_valid_category"
+    
+    if isinstance(categories, str):
+        return category_map.get(categories, "default_valid_category")
+    elif isinstance(categories, list):
+        return [category_map.get(cat, "default_valid_category") for cat in categories]
+    else:
+        raise TypeError("Categories must be a string or a list of strings")
 
 
 def get_valid_team_categories(category,position):
