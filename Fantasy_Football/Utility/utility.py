@@ -1,5 +1,7 @@
 import time
 from datetime import datetime
+import os
+import polars as pl
 
 def get_current_year():
     return datetime.now().year
@@ -236,3 +238,49 @@ def get_team_category_stats(category, position):
         return team_stats 
     except KeyError:
        return "default_team_stats"
+    
+
+def _extract_year(filename:str) -> int:
+    """Extracts the year from a filename that ends with a pattern like "_YYYY.json".
+
+    Args:
+        filename (str): The filename to extract the year from.
+
+    Returns:
+        int: The extracted year, or None if the year could not be extracted.
+
+    Raises:
+        ValueError: If the filename does not contain a valid year component.
+
+    Example:
+        >>> extract_year("data_2023.json")
+        2023
+        >>> extract_year("file_without_year.txt")
+        None
+    """
+    try:
+        return int(filename.split("_")[-1].split(".")[0])
+    except (ValueError, IndexError):
+        return None
+
+def concatenate_json_files(directory_path: str, chunksize=None):
+    all_dfs = []
+    for filename in os.listdir(directory_path):
+        if filename.endswith(".json"):
+            file_path = os.path.join(directory_path, filename)
+
+            # Extract the year from the filename
+            year = _extract_year(filename)
+
+            # Read the JSON file into a DataFrame
+            if chunksize is None:
+                df = pl.read_json(file_path)
+            else:
+                df = pl.read_json(file_path, chunksize=chunksize)
+
+            # Add a new column with the extracted year
+            df = df.with_columns(Season=pl.lit(year))
+
+            all_dfs.append(df)
+
+    return pl.concat(all_dfs)
