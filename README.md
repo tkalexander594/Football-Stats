@@ -12,7 +12,7 @@ A guide to the codebase structure, conventions, and workflows — useful for bot
 3. **Loads** processed data into organized storage layers (Raw → Bronze)
 4. **Audits** all pipeline executions with structured CSV logging
 
-**Tech Stack**: Python 3, Jupyter Notebooks, Polars, Delta Lake, BeautifulSoup4, Requests
+**Tech Stack**: Python 3, Polars, Delta Lake, BeautifulSoup4, Requests
 **Data Scale**: ~35.8 MB spanning 55 years (1970–2024) of NFL statistics
 **No web server, no REST API, no frontend** — this is purely a local data pipeline.
 
@@ -26,13 +26,19 @@ Football-Stats/
 ├── NFL_ERD.drawio.png            # Entity-Relationship Diagram (draw.io)
 ├── Fantasy_Football/             # All source code
 │   ├── __init__.py
-│   ├── Extract/                  # Phase 1: Raw data extraction notebooks
-│   │   ├── extract_player_stats.ipynb
-│   │   ├── extract_team_stats.ipynb
-│   │   └── archive.ipynb         # Archived/unused
+│   ├── Extract/                  # Phase 1: Raw data extraction scripts
+│   │   ├── extract_player_stats.py   # Player stats pipeline (ACTIVE)
+│   │   ├── extract_team_stats.py     # Team stats pipeline (ACTIVE)
+│   │   └── archive/                  # Archived original notebooks
+│   │       ├── extract_player_stats.ipynb
+│   │       ├── extract_team_stats.ipynb
+│   │       └── archive.ipynb
 │   ├── Bronze/                   # Phase 2: Transform raw → Delta Lake
-│   │   ├── stage.ipynb           # Main Bronze transformation
-│   │   └── receiving.ipynb       # Example category-specific transform
+│   │   ├── stage.py              # Bronze staging pipeline (ACTIVE)
+│   │   ├── receiving.py          # Receiving-specific Bronze pipeline (ACTIVE)
+│   │   └── archive/              # Archived original notebooks
+│   │       ├── stage.ipynb
+│   │       └── receiving.ipynb
 │   ├── Helper/                   # Web scraping utilities
 │   │   ├── __init__.py
 │   │   ├── helper.py             # Current scraper (ACTIVE)
@@ -159,41 +165,61 @@ NFL.com  →  Raw (JSON)  →  Bronze (Delta Lake)
 
 ## Running the Pipeline
 
-There is no CLI or scheduler. All execution is via Jupyter notebooks.
+There is no CLI or scheduler. Pipelines are run as Python scripts directly.
 
 ### Step 1 — Extract (Raw)
-Open and run `Fantasy_Football/Extract/extract_player_stats.ipynb`:
+Run `Fantasy_Football/Extract/extract_player_stats.py`:
 ```python
+from Extract.extract_player_stats import extract_and_save_player_stats
+from Logging.AuditLogger import AuditLogger
+
+audit_logger = AuditLogger("Storage/Logs/audit_logs.csv")
+
 extract_and_save_player_stats(
     categories=["passing", "rushing"],
     years=[2023, 2024],
-    base_path="/path/to/Storage/Raw/Player_Stats",
+    base_path="Storage/Raw/Player_Stats",
     source_system="NFL.com",
     destination_system="Local Storage",
-    audit_logger=audit_logger
+    audit_logger=audit_logger,
 )
 ```
 
-Open and run `Fantasy_Football/Extract/extract_team_stats.ipynb`:
+Run `Fantasy_Football/Extract/extract_team_stats.py`:
 ```python
+from Extract.extract_team_stats import extract_and_save_team_stats
+
 extract_and_save_team_stats(
     categories=["passing"],
     years=[2023],
     positions=["offense", "defense"],
-    base_path="/path/to/Storage/Raw/Team_Stats",
+    base_path="Storage/Raw/Team_Stats",
     source_system="NFL.com",
     destination_system="Local Storage",
-    audit_logger=audit_logger
+    audit_logger=audit_logger,
 )
 ```
 
 ### Step 2 — Transform (Bronze)
-Open and run `Fantasy_Football/Bronze/stage.ipynb`:
+Run `Fantasy_Football/Bronze/stage.py`:
 ```python
-write_delta(
-    read_path="/path/to/Storage/Raw/Player_Stats/passing",
-    write_path="/path/to/Storage/Bronze/player_stats/passing",
-    mode="overwrite"
+from Bronze.stage import write_bronze
+
+write_bronze(
+    read_path="Storage/Raw/Player_Stats/passing",
+    write_path="Storage/Bronze/player_stats/passing",
+    mode="overwrite",
+)
+```
+
+For category-specific type casting (e.g. receiving), run `Fantasy_Football/Bronze/receiving.py`:
+```python
+from Bronze.receiving import stage_receiving
+
+stage_receiving(
+    read_path="Storage/Raw/Player_Stats/receiving",
+    write_path="Storage/Bronze/player_stats/receiving",
+    mode="overwrite",
 )
 ```
 
@@ -224,7 +250,8 @@ Check `Storage/Logs/audit_logs.csv` for execution status of each pipeline run.
 - Use `logging` (not `print`) for all diagnostic output in library code; notebooks should configure a logging handler to see output
 
 ### Archived Code
-Files named `archive.py`, `archive1.py`, or `archive.ipynb` are **kept for reference only**. Do not modify or delete them. Do not import from them in active code.
+- `archive.py`, `archive1.py` — kept for reference only; do not modify or import from them
+- `Extract/archive/` and `Bronze/archive/` — contain the original Jupyter notebooks; kept for reference only
 
 ### Paths
 - Older notebook cells may still contain hardcoded absolute paths (e.g., OneDrive paths) — these are legacy artifacts. All active library code (`helper.py`, `utility.py`, `AuditLogger.py`) is path-agnostic.
@@ -244,7 +271,7 @@ Files named `archive.py`, `archive1.py`, or `archive.ipynb` are **kept for refer
 ## Testing
 
 There is **no automated test suite**. Manual validation is done via:
-1. Running notebooks end-to-end
+1. Running pipeline scripts end-to-end
 2. Inspecting `Storage/Logs/audit_logs.csv` for `Status` and `Status_Message`
 3. Spot-checking output JSON/Delta files
 
