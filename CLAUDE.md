@@ -79,29 +79,37 @@ Football-Stats/
 ### `Fantasy_Football/Helper/helper.py`
 Web scraping utility — the primary data source interface.
 
-- `get_data(url)` — Paginates through NFL.com stat table pages. Handles `aftercursor`-based pagination. Returns `(data: list[dict], headers: list[str])`.
-- `get_stats(category, year, position=None)` — Constructs the correct NFL.com URL and calls `get_data`. For player stats omit `position`; for team stats provide `position` (offense/defense/special-teams).
+- `get_data(url, session=None)` — Paginates through NFL.com stat table pages. Handles `aftercursor`-based pagination. Accepts an optional `requests.Session` for connection reuse across pages. Returns `(data: list[list[str]], headers: list[str])`.
+- `get_stats(category, year, position=None)` — Validates inputs via `utility.py`, constructs the correct NFL.com URL, creates a `requests.Session`, and calls `get_data`. Raises `ValueError` on invalid category/position. For player stats omit `position`; for team stats provide `position` (offense/defense/special-teams).
 
 URL patterns used:
 - Player: `https://www.nfl.com/stats/player-stats/category/{category}/{year}/reg/all/{sort_by}/desc`
 - Team:   `https://www.nfl.com/stats/team-stats/{position}/{category}/{year}/reg/all`
 
+All `print()` output replaced with `logging` calls for consistent log management.
+
 ### `Fantasy_Football/Utility/utility.py`
-All data transformation and I/O utilities (~285 lines).
+All data transformation and I/O utilities.
+
+**Module-level constants** (single source of truth — do not duplicate in other files):
+- `_PLAYER_CATEGORY_SORT_BY` — maps player category → NFL.com `sort_by` slug
+- `_TEAM_POSITION_MAP` — maps position → category → URL slug
 
 Key functions:
-| Function | Purpose |
-|---|---|
-| `write_json(path, df)` | Save Polars DataFrame to JSON |
-| `write_delta(path, df)` | Save Polars DataFrame as Delta Lake table |
-| `write_csv(path, df)` | Save Polars DataFrame to CSV |
-| `concatenate_json_files(directory_path)` | Combine all JSON files in a folder, adding a `Season` column extracted from filenames |
-| `current_nfl_regular_season()` | Returns the current NFL season year as an int |
-| `get_valid_player_categories(categories)` | Validates and returns only known player stat categories |
-| `get_valid_team_categories(category, position)` | Validates team stat category + position combo |
-| `get_player_category_stats(category)` | Maps category name → NFL.com `sort_by` parameter |
-| `get_team_category_stats(category, position)` | Maps team category + position → URL slug |
-| `_extract_year(filename)` | Parses year from filenames like `passing_2023.json` → `2023` |
+| Function | Signature | Purpose |
+|---|---|---|
+| `write_json` | `(path: str, df: pl.DataFrame) -> None` | Save Polars DataFrame to JSON |
+| `write_delta` | `(path: str, df: pl.DataFrame) -> None` | Save Polars DataFrame as Delta Lake table |
+| `write_csv` | `(path: str, df: pl.DataFrame) -> None` | Save Polars DataFrame to CSV |
+| `concatenate_json_files` | `(directory_path: str) -> pl.DataFrame` | Combine all JSON files in a folder in sorted order, adding a `Season` column |
+| `current_nfl_regular_season` | `() -> int` | Returns the current NFL season year |
+| `get_valid_player_categories` | `(categories) -> str \| list[str]` | Validates player stat categories; raises `ValueError` on unknown input |
+| `get_valid_team_categories` | `(category, position) -> str` | Validates team stat category + position; raises `ValueError` on unknown input |
+| `get_player_category_stats` | `(category: str) -> str` | Maps category name → NFL.com `sort_by` parameter; raises `ValueError` on unknown |
+| `get_team_category_stats` | `(category: str, position: str) -> str` | Maps team category + position → URL slug; raises `ValueError` on unknown |
+| `_extract_year` | `(filename: str) -> int \| None` | Parses year from filenames like `passing_2023.json` → `2023` |
+
+> **Note:** `write_*` functions use `logging.info()` instead of `print()`. Configure a logging handler in notebooks if you want output to appear.
 
 ### `Fantasy_Football/Logging/AuditLogger.py`
 Singleton audit logger that appends a row to `Storage/Logs/audit_logs.csv` on each pipeline execution.
@@ -114,6 +122,8 @@ Status, Status_Message
 ```
 
 Uses `fcntl` file locking for safe concurrent writes. Always instantiate via the singleton.
+
+> **Important:** The singleton raises `ValueError` if instantiated a second time with a different `log_file_path`. All pipeline code in a session must use the same log file path.
 
 ---
 
@@ -210,15 +220,17 @@ Check `Storage/Logs/audit_logs.csv` for execution status of each pipeline run.
 
 ### Error Handling
 - Wrap network requests in try/except; log failures to the AuditLogger
-- Use validation functions (`get_valid_player_categories`, `get_valid_team_categories`) before calling scrapers
+- Use validation functions (`get_valid_player_categories`, `get_valid_team_categories`) before calling scrapers — they now raise `ValueError` on invalid input instead of silently returning a default string
 - Do not raise unhandled exceptions from notebook pipeline cells — catch and log them
+- Use `logging` (not `print`) for all diagnostic output in library code; notebooks should configure a logging handler to see output
 
 ### Archived Code
 Files named `archive.py`, `archive1.py`, or `archive.ipynb` are **kept for reference only**. Do not modify or delete them. Do not import from them in active code.
 
 ### Paths
-- The repository currently contains some hardcoded absolute paths (e.g., OneDrive paths) in older notebook cells — these are legacy artifacts. New code should use relative paths or accept `base_path` as a parameter.
+- Older notebook cells may still contain hardcoded absolute paths (e.g., OneDrive paths) — these are legacy artifacts. All active library code (`helper.py`, `utility.py`, `AuditLogger.py`) is path-agnostic.
 - There is no `.env` file or config system; path configuration is done via notebook parameters.
+- Do **not** use `sys.path.append()` in library source files — it is a notebook-level concern only.
 
 ### Dependencies
 - No `requirements.txt` exists yet. Key packages needed in the environment:
