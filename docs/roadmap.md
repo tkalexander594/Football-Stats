@@ -1,7 +1,8 @@
 # Prioritized Implementation Roadmap
 
-Merges Appendix A Section 9 (phased build plan) with the additional items
-identified in `docs/architecture-review.md`, `docs/data-source-validation.md`,
+Merges Appendix A Section 9 (phased build plan, now committed as
+`docs/build-plan.md`) with the additional items identified in
+`docs/architecture-review.md`, `docs/data-source-validation.md`,
 `docs/draft-strategy.md`, and `docs/sleeper-model-review.md`.
 
 **Priority key**:
@@ -85,9 +86,10 @@ actually useful for draft prep" items.
 
 ## Cross-reference summary
 
-- **Appendix A Section 9** phases 0–8 map to **P0** items 0.1–0.9 above
-  (unchanged in scope; this roadmap doesn't reorder them, just adds P1–P3
-  alongside).
+- **Appendix A** (Sections 1-9 of the original build plan) is committed as
+  `docs/build-plan.md`. **Appendix A Section 9** phases 0–8 map to **P0**
+  items 0.1–0.9 above (unchanged in scope; this roadmap doesn't reorder them,
+  just adds P1–P3 alongside).
 - Every P1 item traces to `docs/architecture-review.md` (storage/versioning/
   quality sections) or `docs/data-source-validation.md` §4 (validation
   checks).
